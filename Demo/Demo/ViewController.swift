@@ -12,36 +12,47 @@ import SDWebImage
 
 class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    fileprivate let images = [Image(image: UIImage(named: "1")),
-                              Image(image: UIImage(named: "2")),
-                              Image(image: UIImage(named: "3")),
-                              Image(image: UIImage(named: "4")),
-                              Image(image: UIImage(named: "5")),
-                              Image(image: UIImage(named: "6")),
-                              Image(urlString: "https://picsum.photos/1500?image=1084"),
-                              Image(urlString: "https://picsum.photos/1500?image=1083"),
-                              Image(urlString: "https://picsum.photos/1500?image=1082"),
-                              Image(urlString: "https://picsum.photos/1500?image=1081")].compactMap({$0})
+    private let media: [Media] = [
+        .image(UIImage(named: "1")!),
+        .image(UIImage(named: "2")!),
+        .image(UIImage(named: "3")!),
+        .image(UIImage(named: "4")!),
+        .image(UIImage(named: "5")!),
+        .image(UIImage(named: "6")!),
+        .imageFromRemoteURL(URL(string: "https://picsum.photos/1500?image=1084")!),
+        .imageFromRemoteURL(URL(string: "https://picsum.photos/1500?image=1083")!),
+        .imageFromRemoteURL(URL(string: "https://picsum.photos/1500?image=1082")!),
+        .imageFromRemoteURL(URL(string: "https://picsum.photos/1500?image=1081")!)
+    ]
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return media.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
-        if let image = images[indexPath.row].image {
+
+        switch media[indexPath.row] {
+        case .image(let image):
             cell.imageView.image = image
-        } else if let url = images[indexPath.row].url {
+        case .imageFromRemoteURL(let url):
             cell.imageView.sd_setImage(with: url, completed: nil)
-        } else {
+        case .imageFromData(let data):
+            cell.imageView.image = UIImage(data: data)
+        case .imageFromCustom(let closure):
+            cell.imageView.image = closure()
+        case .videoFromLocalURL(let url):
+            cell.imageView.image = nil
+        case .videoFromCustom(let closure):
             cell.imageView.image = nil
         }
+
         cell.imageView.contentMode = .scaleAspectFill
         return cell
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        present(PagingViewController(images: images.compactMap({$0}), initialIndex: indexPath.row), animated: true)
+        present(PagingViewController(images: media, initialIndex: indexPath.row), animated: true)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

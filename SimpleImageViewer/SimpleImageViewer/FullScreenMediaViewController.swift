@@ -1,17 +1,24 @@
 import UIKit
 import SDWebImage
+import AVKit
 
-public final class ImageViewerController: UIViewController {
+// TODO: Needs a play button overlay when media is video
 
-    @IBOutlet fileprivate var scrollView: UIScrollView!
-    @IBOutlet fileprivate var imageView: UIImageView!
-    @IBOutlet fileprivate var overlayViews: [UIView]!
-    @IBOutlet fileprivate var activityIndicator: UIActivityIndicatorView!
+public final class FullScreenMediaViewController: UIViewController {
+
+    @IBOutlet private var scrollView: UIScrollView!
+    @IBOutlet private var imageView: UIImageView!
+    @IBOutlet private var overlayViews: [UIView]!
+    @IBOutlet private var activityIndicator: UIActivityIndicatorView!
+
+    private var avPlayer = AVQueuePlayer()
+    private var avPlayerLayer: AVPlayerLayer?
+    private var avPlayerLooper: AVPlayerLooper?
 
     private let thresholdVelocity: CGFloat = 500 // The speed of swipe needs to be at least this amount of pixels per second for the swipe to finish dismissal.
     private let swipeToDismissRecognizer = UIPanGestureRecognizer()
 
-    private var image: Image?
+    private var media: Media?
     private var swipingToDismiss = false
     private var swipeToDismissTransition: GallerySwipeToDismissTransition?
 
@@ -22,8 +29,8 @@ public final class ImageViewerController: UIViewController {
     var controllerIsSwipingToDismiss: ((_ distanceToEdge: CGFloat) -> Void)?
     var controllerDidDismissViaSwipe: (() -> Void)?
     
-    public init(image: Image) {
-        self.image = image
+    public init(media: Media) {
+        self.media = media
         super.init(nibName: String(describing: type(of: self)), bundle: Bundle(for: type(of: self)))
     }
     
@@ -31,18 +38,28 @@ public final class ImageViewerController: UIViewController {
         super.init(coder: aDecoder)
     }
     
-    override public func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let image = image?.image {
+        switch media {
+        case .image(let image):
             imageView.image = image
-        } else if let url = image?.url {
-            imageView.sd_setImage(with: url) { (image, error, _, _) in
-                self.imageView.image = image
-                self.view.setNeedsLayout()
+        case .imageFromRemoteURL(let url):
+            imageView.sd_setImage(with: url) { [weak self] (image, _, _, _) in
+                self?.imageView.image = image
+                self?.view.setNeedsLayout()
+                self?.view.layoutIfNeeded()
             }
-        } else {
-            imageView.image = nil
+        case .imageFromData(let data):
+            imageView.image = UIImage(data: data)
+        case .imageFromCustom(let closure):
+            imageView.image = closure()
+        case .videoFromLocalURL(let url):
+            setupVideo(url: url)
+        case .videoFromCustom(let closure):
+            setupVideo(url: closure())
+        default:
+            break
         }
         
         setupScrollView()
@@ -52,15 +69,32 @@ public final class ImageViewerController: UIViewController {
         scrollView.isScrollEnabled = false
     }
 
+    private func setupVideo(url: URL) {
+        avPlayerLayer = AVPlayerLayer(player: avPlayer)
+        avPlayerLayer?.frame = UIScreen.main.bounds
+        imageView.layer.addSublayer(avPlayerLayer!)
+        avPlayerLayer?.videoGravity = .resizeAspect
+        avPlayerLooper = AVPlayerLooper(player: avPlayer, templateItem: AVPlayerItem(url: url))
+        avPlayer.volume = 0 // intentionally disabling for now until we can get a UI toggle
+    }
+
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         overlayAlpha = PagingViewController.overlayIsHidden ? 0 : 1
+    }
+
+    public override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // Play video (if there is one) automatically
+        avPlayer.play()
     }
 
     public override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         // Reset zoom when view disappears
         scrollView.setZoomScale(scrollView.minimumZoomScale, animated: false)
+        // Pause video (if there is one)
+        avPlayer.pause()
     }
 
     deinit {
@@ -68,7 +102,7 @@ public final class ImageViewerController: UIViewController {
     }
 }
 
-private extension ImageViewerController {
+private extension FullScreenMediaViewController {
     func setupScrollView() {
         scrollView.decelerationRate = UIScrollView.DecelerationRate.fast
         scrollView.alwaysBounceVertical = true
@@ -105,6 +139,13 @@ private extension ImageViewerController {
         } else {
             toggleOverlay(visible: overlayAlpha == 0)
         }
+
+        // Toggle video play/pause
+        if avPlayer.rate != 0 {
+            avPlayer.pause()
+        } else {
+            avPlayer.play()
+        }
     }
 
     private func toggleOverlay(visible: Bool) {
@@ -135,7 +176,7 @@ private extension ImageViewerController {
     }
 }
 
-extension ImageViewerController: UIScrollViewDelegate {
+extension FullScreenMediaViewController: UIScrollViewDelegate {
     public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
@@ -167,7 +208,7 @@ extension ImageViewerController: UIScrollViewDelegate {
 
 // MARK: - Swipe To Dismiss
 
-extension ImageViewerController: UIGestureRecognizerDelegate {
+extension FullScreenMediaViewController: UIGestureRecognizerDelegate {
 
     // We only want the swipeToDismissRecognizer to handle vertical swipes. Horizontal swipes should be disregarded so that the UIPageViewController can handle it for paging
     public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {

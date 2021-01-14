@@ -19,13 +19,13 @@ public class PagingViewController: UIPageViewController {
     private var pages = [UIViewController]()
     private var initialIndex: Int?
 
-    public convenience init(images: [Image], initialIndex: Int? = nil) {
+    public convenience init(media: [Media], initialIndex: Int? = nil) {
         self.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewController.OptionsKey.interPageSpacing : 20])
 
         self.initialIndex = initialIndex
 
-        images.forEach {
-            let controller = ImageViewerController(image: $0)
+        media.forEach {
+            let controller = FullScreenMediaViewController(media: $0)
             controller.controllerIsSwipingToDismiss = { [weak self] distanceToEdge in
                 self?.view.alpha = 1 - distanceToEdge
             }

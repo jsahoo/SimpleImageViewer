@@ -8,25 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		429DD0A425AFC7D1000D34C5 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 429DD0A325AFC7D1000D34C5 /* SDWebImage */; };
-		429DD0A725AFC81B000D34C5 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429DD0A625AFC81B000D34C5 /* Image.swift */; };
+		429DD0AA25AFD1DD000D34C5 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429DD0A925AFD1DD000D34C5 /* Media.swift */; };
 		42DCC634246B683700A9C745 /* SimpleImageViewer.h in Headers */ = {isa = PBXBuildFile; fileRef = 42DCC632246B683700A9C745 /* SimpleImageViewer.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		42DCC665246B68E800A9C745 /* ImageViewerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DCC664246B68E800A9C745 /* ImageViewerController.swift */; };
+		42DCC665246B68E800A9C745 /* FullScreenMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DCC664246B68E800A9C745 /* FullScreenMediaViewController.swift */; };
 		42DCC667246B68ED00A9C745 /* PagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DCC666246B68ED00A9C745 /* PagingViewController.swift */; };
 		42DCC66A246B68F700A9C745 /* ImageViewer-Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 42DCC668246B68F700A9C745 /* ImageViewer-Assets.xcassets */; };
-		42DCC66B246B68F700A9C745 /* ImageViewerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42DCC669246B68F700A9C745 /* ImageViewerController.xib */; };
+		42DCC66B246B68F700A9C745 /* FullScreenMediaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 42DCC669246B68F700A9C745 /* FullScreenMediaViewController.xib */; };
 		42DCC66E246B690000A9C745 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DCC66C246B690000A9C745 /* Utilities.swift */; };
 		42DCC66F246B690000A9C745 /* SwipeToDismissTransitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DCC66D246B690000A9C745 /* SwipeToDismissTransitions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		429DD0A625AFC81B000D34C5 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		429DD0A925AFD1DD000D34C5 /* Media.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
 		42DCC62F246B683700A9C745 /* SimpleImageViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleImageViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DCC632246B683700A9C745 /* SimpleImageViewer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleImageViewer.h; sourceTree = "<group>"; };
 		42DCC633246B683700A9C745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		42DCC664246B68E800A9C745 /* ImageViewerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewerController.swift; sourceTree = "<group>"; };
+		42DCC664246B68E800A9C745 /* FullScreenMediaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FullScreenMediaViewController.swift; sourceTree = "<group>"; };
 		42DCC666246B68ED00A9C745 /* PagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewController.swift; sourceTree = "<group>"; };
 		42DCC668246B68F700A9C745 /* ImageViewer-Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "ImageViewer-Assets.xcassets"; sourceTree = "<group>"; };
-		42DCC669246B68F700A9C745 /* ImageViewerController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewerController.xib; sourceTree = "<group>"; };
+		42DCC669246B68F700A9C745 /* FullScreenMediaViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FullScreenMediaViewController.xib; sourceTree = "<group>"; };
 		42DCC66C246B690000A9C745 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		42DCC66D246B690000A9C745 /* SwipeToDismissTransitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeToDismissTransitions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,11 +64,11 @@
 			children = (
 				42DCC632246B683700A9C745 /* SimpleImageViewer.h */,
 				42DCC633246B683700A9C745 /* Info.plist */,
-				429DD0A625AFC81B000D34C5 /* Image.swift */,
-				42DCC664246B68E800A9C745 /* ImageViewerController.swift */,
+				429DD0A925AFD1DD000D34C5 /* Media.swift */,
+				42DCC664246B68E800A9C745 /* FullScreenMediaViewController.swift */,
 				42DCC666246B68ED00A9C745 /* PagingViewController.swift */,
 				42DCC668246B68F700A9C745 /* ImageViewer-Assets.xcassets */,
-				42DCC669246B68F700A9C745 /* ImageViewerController.xib */,
+				42DCC669246B68F700A9C745 /* FullScreenMediaViewController.xib */,
 				42DCC66D246B690000A9C745 /* SwipeToDismissTransitions.swift */,
 				42DCC66C246B690000A9C745 /* Utilities.swift */,
 			);
@@ -152,7 +152,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42DCC66A246B68F700A9C745 /* ImageViewer-Assets.xcassets in Resources */,
-				42DCC66B246B68F700A9C745 /* ImageViewerController.xib in Resources */,
+				42DCC66B246B68F700A9C745 /* FullScreenMediaViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,9 +165,9 @@
 			files = (
 				42DCC66E246B690000A9C745 /* Utilities.swift in Sources */,
 				42DCC667246B68ED00A9C745 /* PagingViewController.swift in Sources */,
-				42DCC665246B68E800A9C745 /* ImageViewerController.swift in Sources */,
+				429DD0AA25AFD1DD000D34C5 /* Media.swift in Sources */,
+				42DCC665246B68E800A9C745 /* FullScreenMediaViewController.swift in Sources */,
 				42DCC66F246B690000A9C745 /* SwipeToDismissTransitions.swift in Sources */,
-				429DD0A725AFC81B000D34C5 /* Image.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,7 +300,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = B456G48992;
+				DEVELOPMENT_TEAM = 5XMU29PTPQ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -328,7 +328,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = B456G48992;
+				DEVELOPMENT_TEAM = 5XMU29PTPQ;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
