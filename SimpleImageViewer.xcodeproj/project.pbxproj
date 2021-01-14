@@ -3,14 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		429DD09925AFC357000D34C5 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 429DD09825AFC357000D34C5 /* SDWebImage */; };
 		8934CB362118C53E000BBF0E /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8934CB352118C53E000BBF0E /* Image.swift */; };
 		897C7D7A21124B8900FF71C0 /* SwipeToDismissTransitions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897C7D7921124B8900FF71C0 /* SwipeToDismissTransitions.swift */; };
-		8990BF3B2113A9FE007F8F21 /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8990BF3A2113A9FD007F8F21 /* SDWebImage.framework */; };
-		8990BF3C2113AA0B007F8F21 /* SDWebImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8990BF3A2113A9FD007F8F21 /* SDWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		89F2422F211108EB00D033BC /* PagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F2422D211108EB00D033BC /* PagingViewController.swift */; };
 		A02EE5B91EF16E54000EAB41 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A02EE5B81EF16E54000EAB41 /* Info.plist */; };
 		A02EE5CF1EF172C8000EAB41 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = A02EE5CD1EF172C3000EAB41 /* Utilities.swift */; };
@@ -41,16 +40,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8990BF382113A971007F8F21 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8990BF3C2113AA0B007F8F21 /* SDWebImage.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A0BF70B31EDC5B1400109F6E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -67,7 +56,6 @@
 /* Begin PBXFileReference section */
 		8934CB352118C53E000BBF0E /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		897C7D7921124B8900FF71C0 /* SwipeToDismissTransitions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeToDismissTransitions.swift; sourceTree = "<group>"; };
-		8990BF3A2113A9FD007F8F21 /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDWebImage.framework; path = Carthage/Build/iOS/SDWebImage.framework; sourceTree = "<group>"; };
 		89F2422D211108EB00D033BC /* PagingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingViewController.swift; sourceTree = "<group>"; };
 		A02EE5B81EF16E54000EAB41 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A02EE5CB1EF16EBE000EAB41 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -110,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8990BF3B2113A9FE007F8F21 /* SDWebImage.framework in Frameworks */,
+				429DD09925AFC357000D34C5 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -120,7 +108,6 @@
 		897C7D812113A75000FF71C0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8990BF3A2113A9FD007F8F21 /* SDWebImage.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -256,6 +243,8 @@
 				A0BF70AD1EDC5B1400109F6E /* PBXTargetDependency */,
 			);
 			name = Example;
+			packageProductDependencies = (
+			);
 			productName = ImageViewer;
 			productReference = A07E76D31ECC94A400B77D46 /* Example.app */;
 			productType = "com.apple.product-type.application";
@@ -268,13 +257,15 @@
 				A0BF70A31EDC5B1400109F6E /* Frameworks */,
 				A0BF70A41EDC5B1400109F6E /* Headers */,
 				A0BF70A51EDC5B1400109F6E /* Resources */,
-				8990BF382113A971007F8F21 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SimpleImageViewer;
+			packageProductDependencies = (
+				429DD09825AFC357000D34C5 /* SDWebImage */,
+			);
 			productName = ImageViewer;
 			productReference = A0BF70A71EDC5B1400109F6E /* SimpleImageViewer.framework */;
 			productType = "com.apple.product-type.framework";
@@ -311,10 +302,14 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
 			mainGroup = A07E76CA1ECC94A400B77D46;
+			packageReferences = (
+				429DD09725AFC357000D34C5 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = A07E76D41ECC94A400B77D46 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -415,7 +410,11 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SimpleImageViewerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.afrogleap.SimpleImageViewerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -427,7 +426,11 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SimpleImageViewerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.afrogleap.SimpleImageViewerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -535,7 +538,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -550,7 +554,10 @@
 				DEVELOPMENT_TEAM = 44MAY72KU6;
 				INFOPLIST_FILE = "$(SRCROOT)/ImageViewer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jonathansahoo.ImageViewer-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "d5b8f7cb-0120-427a-9ff1-14d28ee0046f";
@@ -568,7 +575,10 @@
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/ImageViewer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jonathansahoo.ImageViewer-Example";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -594,7 +604,11 @@
 				INFOPLIST_FILE = "$(SRCROOT)/ImageViewer/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonathansahoo.ImageViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -623,7 +637,11 @@
 				INFOPLIST_FILE = "$(SRCROOT)/ImageViewer/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jonathansahoo.ImageViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -675,6 +693,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		429DD09725AFC357000D34C5 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		429DD09825AFC357000D34C5 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 429DD09725AFC357000D34C5 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A07E76CB1ECC94A400B77D46 /* Project object */;
 }

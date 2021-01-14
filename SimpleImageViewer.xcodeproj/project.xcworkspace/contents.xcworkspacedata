@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:/Users/lucas/Development/aFrogleap/ImageViewer/SimpleImageViewer.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

@@ -227,7 +227,7 @@ extension ImageViewerController: UIGestureRecognizerDelegate {
     }
 
     // Reports the continuous progress of Swipe To Dismiss to the Paging View Controller
-    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
         guard swipingToDismiss, keyPath == "contentOffset" else { return }
         let distanceToEdge: CGFloat = (scrollView.bounds.height / 2) + (imageView.bounds.height / 2)
         let percentDistance: CGFloat = fabs(scrollView.contentOffset.y / distanceToEdge)
