@@ -8,23 +8,34 @@
 
 import UIKit
 import SimpleImageViewer
+import SDWebImage
 
 class ViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    fileprivate let images = [UIImage(named: "1"),
-                              UIImage(named: "2"),
-                              UIImage(named: "3"),
-                              UIImage(named: "4"),
-                              UIImage(named: "5"),
-                              UIImage(named: "6")]
-
+    fileprivate let images = [Image(image: UIImage(named: "1")),
+                              Image(image: UIImage(named: "2")),
+                              Image(image: UIImage(named: "3")),
+                              Image(image: UIImage(named: "4")),
+                              Image(image: UIImage(named: "5")),
+                              Image(image: UIImage(named: "6")),
+                              Image(urlString: "https://picsum.photos/1500?image=1084"),
+                              Image(urlString: "https://picsum.photos/1500?image=1083"),
+                              Image(urlString: "https://picsum.photos/1500?image=1082"),
+                              Image(urlString: "https://picsum.photos/1500?image=1081")].compactMap({$0})
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
-        cell.imageView.image = images[indexPath.row]
+        if let image = images[indexPath.row].image {
+            cell.imageView.image = image
+        } else if let url = images[indexPath.row].url {
+            cell.imageView.sd_setImage(with: url, completed: nil)
+        } else {
+            cell.imageView.image = nil
+        }
         cell.imageView.contentMode = .scaleAspectFill
         return cell
     }

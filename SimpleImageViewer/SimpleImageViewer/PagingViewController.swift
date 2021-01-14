@@ -19,7 +19,7 @@ public class PagingViewController: UIPageViewController {
     private var pages = [UIViewController]()
     private var initialIndex: Int?
 
-    public convenience init(images: [UIImage], initialIndex: Int? = nil) {
+    public convenience init(images: [Image], initialIndex: Int? = nil) {
         self.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: [UIPageViewController.OptionsKey.interPageSpacing : 20])
 
         self.initialIndex = initialIndex

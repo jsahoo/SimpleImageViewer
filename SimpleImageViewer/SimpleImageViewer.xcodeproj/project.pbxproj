@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		429DD0A425AFC7D1000D34C5 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 429DD0A325AFC7D1000D34C5 /* SDWebImage */; };
+		429DD0A725AFC81B000D34C5 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429DD0A625AFC81B000D34C5 /* Image.swift */; };
 		42DCC634246B683700A9C745 /* SimpleImageViewer.h in Headers */ = {isa = PBXBuildFile; fileRef = 42DCC632246B683700A9C745 /* SimpleImageViewer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		42DCC665246B68E800A9C745 /* ImageViewerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DCC664246B68E800A9C745 /* ImageViewerController.swift */; };
 		42DCC667246B68ED00A9C745 /* PagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42DCC666246B68ED00A9C745 /* PagingViewController.swift */; };
@@ -17,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		429DD0A625AFC81B000D34C5 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		42DCC62F246B683700A9C745 /* SimpleImageViewer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimpleImageViewer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42DCC632246B683700A9C745 /* SimpleImageViewer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimpleImageViewer.h; sourceTree = "<group>"; };
 		42DCC633246B683700A9C745 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -33,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				429DD0A425AFC7D1000D34C5 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +64,7 @@
 			children = (
 				42DCC632246B683700A9C745 /* SimpleImageViewer.h */,
 				42DCC633246B683700A9C745 /* Info.plist */,
+				429DD0A625AFC81B000D34C5 /* Image.swift */,
 				42DCC664246B68E800A9C745 /* ImageViewerController.swift */,
 				42DCC666246B68ED00A9C745 /* PagingViewController.swift */,
 				42DCC668246B68F700A9C745 /* ImageViewer-Assets.xcassets */,
@@ -98,6 +103,9 @@
 			dependencies = (
 			);
 			name = SimpleImageViewer;
+			packageProductDependencies = (
+				429DD0A325AFC7D1000D34C5 /* SDWebImage */,
+			);
 			productName = SimpleImageViewer;
 			productReference = 42DCC62F246B683700A9C745 /* SimpleImageViewer.framework */;
 			productType = "com.apple.product-type.framework";
@@ -126,6 +134,9 @@
 				Base,
 			);
 			mainGroup = 42DCC625246B683700A9C745;
+			packageReferences = (
+				429DD0A225AFC7D1000D34C5 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 42DCC630246B683700A9C745 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -156,6 +167,7 @@
 				42DCC667246B68ED00A9C745 /* PagingViewController.swift in Sources */,
 				42DCC665246B68E800A9C745 /* ImageViewerController.swift in Sources */,
 				42DCC66F246B690000A9C745 /* SwipeToDismissTransitions.swift in Sources */,
+				429DD0A725AFC81B000D34C5 /* Image.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +371,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		429DD0A225AFC7D1000D34C5 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		429DD0A325AFC7D1000D34C5 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 429DD0A225AFC7D1000D34C5 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 42DCC626246B683700A9C745 /* Project object */;
 }
