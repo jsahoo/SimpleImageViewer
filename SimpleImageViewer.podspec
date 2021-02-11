@@ -12,5 +12,6 @@ Pod::Spec.new do |s|
   s.source_files = "SimpleImageViewer/**/*.{swift}"
   s.resources = ["SimpleImageViewer/**/*.{xib}", "SimpleImageViewer/**/*.{xcassets}"]
 
+  s.dependency 'SDWebImage', '~> 5.10'
 
 end
